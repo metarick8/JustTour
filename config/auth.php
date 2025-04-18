@@ -44,6 +44,17 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
+        'team_api' => [
+            'driver' => 'jwt',
+            'provider' => 'teams',
+            //'hash' => false,
+        ],
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'admins',
+            //'hash' => false,
+        ],
+
     ],
 
     /*
@@ -68,7 +79,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'teams' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Team::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

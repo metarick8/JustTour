@@ -9,38 +9,37 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class Team extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function UserTeam(){
-        return $this->hasMany(UserTeam::class, 'UserTeamId');
+    public function Trips(){
+        return $this->hasMany(Trip::class, 'TeamId');
     }
 
-    public function UserSite(){
-        return $this->hasMany(UserSite::class, 'UserSiteId');
+
+     public function UserTeam(){
+        return $this->hasMany(UserTeam::class, 'TeamId'); // Correct foreign key
     }
 
-    public function ReserveTrip(){
-        return $this->hasMany(ReserveTrip::class, 'ReserveTripId');
+
+    public function TeamPhotos(){
+        return $this->hasMany(TeamPhotos::class, 'TeamPhotosId');
     }
-    
 
     protected $fillable = [
-        'FirstName',
-        'LastName',
+        'TeamName',
         'Email',
         'Password',
-        'Number',
-        'Age'
+        'Description',
+        'ContactInfo',
+        'ProfilePhoto'
     ];
-
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
 
     protected $casts = [
         'email_verified_at' => 'datetime',

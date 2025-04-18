@@ -274,6 +274,7 @@ return [
 
         'jwt' => Tymon\JWTAuth\Providers\JWT\Lcobucci::class,
 
+
         /*
         |--------------------------------------------------------------------------
         | Authentication Provider
